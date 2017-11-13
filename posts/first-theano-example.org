@@ -1,0 +1,40 @@
+#+BEGIN_COMMENT
+.. title: First Theano Example
+.. slug: first-theano-example
+.. date: 2017-11-12 16:56:09 UTC-08:00
+.. tags: 
+.. category: theano
+.. link: 
+.. description: A test of theano
+.. type: text
+#+END_COMMENT
+
+* Imports
+#+BEGIN_SRC ipython :session theano :results none
+import theano
+from theano import tensor
+#+END_SRC
+
+* Some values
+#+BEGIN_SRC ipython :session theano :results none
+a = tensor.dscalar()
+b = tensor.dscalar()
+c = a + b
+#+END_SRC
+
+At this point 'c' is a symbolic expression without any concrete value.
+* Expression to function
+  So now we make into a callable function.
+#+BEGIN_SRC ipython :session theano :results none
+c_function = theano.function([a,b], c)
+#+END_SRC
+
+* Pass in some values
+#+BEGIN_SRC ipython :session theano :results output
+print(c_function(5.0, 1.6))
+#+END_SRC
+
+#+RESULTS:
+: 6.6
+* Conclusion
+  This shows how you can create a simple equation and evaluate it with concrete values using theano.
