@@ -9,6 +9,8 @@
 .. type: text
 #+END_COMMENT
 
+[[http://deeplearning.net/software/theano/index.html][Theano]] is a python library for evaluating mathematical expressions.
+
 * Imports
 #+BEGIN_SRC ipython :session theano :results none
 import theano
@@ -22,7 +24,7 @@ b = tensor.dscalar()
 c = a + b
 #+END_SRC
 
-At this point 'c' is a symbolic expression without any concrete value.
+At this point 'c' is a symbolic expression without any concrete value, it just knows you are going to add two numbers (scalars).
 * Expression to function
   So now we make into a callable function.
 #+BEGIN_SRC ipython :session theano :results none
@@ -30,6 +32,7 @@ c_function = theano.function([a,b], c)
 #+END_SRC
 
 * Pass in some values
+  And then pass in some values for it to evaluate.
 #+BEGIN_SRC ipython :session theano :results output
 print(c_function(5.0, 1.6))
 #+END_SRC
@@ -37,4 +40,4 @@ print(c_function(5.0, 1.6))
 #+RESULTS:
 : 6.6
 * Conclusion
-  This shows how you can create a simple equation and evaluate it with concrete values using theano.
+  This shows how you can create a simple equation and evaluate it with concrete values using theano. In this case we used scalar values, but as the name (``tensor``) suggests, it is oriented toward vector calculations.

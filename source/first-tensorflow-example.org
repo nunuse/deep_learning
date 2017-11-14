@@ -1,0 +1,38 @@
+#+BEGIN_COMMENT
+.. title: First TensorFlow Example
+.. slug: first-tensorflow-example
+.. date: 2017-11-13 12:33:35 UTC-08:00
+.. tags: tensorflow
+.. category: 
+.. link: 
+.. description: A first tensorflow example.
+.. type: text
+#+END_COMMENT
+
+[[https://www.tensorflow.org][Tensor Flow]] is a library for numerical computation that uses data-flow graphs. The data that flows between the nodes in the graph are represented as tensors, thus the name.
+
+* Imports
+#+BEGIN_SRC ipython :session tensor :results none
+import tensorflow
+#+END_SRC
+* Declaring Some Variables
+#+BEGIN_SRC ipython :session tensor :results none
+a = tensorflow.placeholder(tensorflow.float32)
+b = tensorflow.placeholder(tensorflow.float32)
+#+END_SRC
+* An Add Function
+#+BEGIN_SRC ipython :session tensor :results none
+adder = tensorflow.add(a, b)
+#+END_SRC
+* Bind Some Data to the Variables
+#+BEGIN_SRC ipython :session tensor :results none
+binding = {a: 2.3, b: 6.6}
+#+END_SRC
+* Run the Session
+#+BEGIN_SRC ipython :session tensor :results output
+session = tensorflow.Session()
+print(session.run(adder, feed_dict=binding))
+#+END_SRC
+
+#+RESULTS:
+: 8.9
